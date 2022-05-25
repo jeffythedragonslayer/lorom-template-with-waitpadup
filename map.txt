@@ -1,0 +1,166 @@
+Modules list:
+-------------
+snesheader.o:
+    CODE              Offs=000000  Size=000009  Align=00001  Fill=0000
+    SNESHEADER        Offs=000000  Size=000050  Align=00001  Fill=0000
+init.o:
+    CODE              Offs=000009  Size=000008  Align=00001  Fill=0000
+    CODE7             Offs=000000  Size=0000A1  Align=00001  Fill=0000
+main.o:
+    CODE              Offs=000011  Size=00000E  Align=00001  Fill=0000
+    BSS               Offs=000000  Size=000400  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000003  Align=00001  Fill=0000
+    CODE1             Offs=000000  Size=00008E  Align=00001  Fill=0000
+bg.o:
+    CODE5             Offs=000000  Size=0000A8  Align=00001  Fill=0000
+    RODATA5           Offs=000000  Size=000610  Align=00001  Fill=0000
+player.o:
+    ZEROPAGE          Offs=000003  Size=000007  Align=00001  Fill=0000
+    CODE4             Offs=000000  Size=0001AF  Align=00001  Fill=0000
+    RODATA4           Offs=000000  Size=00061E  Align=00001  Fill=0000
+ppuclear.o:
+    CODE3             Offs=000000  Size=0000AD  Align=00001  Fill=0000
+blarggapu.o:
+    CODE2             Offs=000000  Size=00007F  Align=00001  Fill=0000
+spcimage.o:
+    SPCZEROPAGE       Offs=000000  Size=000063  Align=00001  Fill=0000
+    SPCIMAGE          Offs=000000  Size=001907  Align=00100  Fill=0000
+musicseq.o:
+    SPCIMAGE          Offs=001907  Size=000317  Align=00001  Fill=0000
+
+
+Segment list:
+-------------
+Name                   Start     End    Size  Align
+----------------------------------------------------
+SPCZEROPAGE           000010  000072  000063  00001
+ZEROPAGE              000010  000019  00000A  00001
+BSS                   000200  0005FF  000400  00001
+SPCIMAGE              000200  001E1D  001C1E  00100
+CODE                  808000  80801E  00001F  00001
+SNESHEADER            80FFB0  80FFFF  000050  00001
+CODE1                 818000  81808D  00008E  00001
+CODE2                 828000  82807E  00007F  00001
+CODE3                 838000  8380AC  0000AD  00001
+CODE4                 848000  8481AE  0001AF  00001
+RODATA4               848200  84881D  00061E  00001
+CODE5                 858000  8580A7  0000A8  00001
+RODATA5               858100  85870F  000610  00001
+CODE7                 878000  8780A0  0000A1  00001
+
+
+Exports list by name:
+---------------------
+OAM                       000200 RLA    OAMHI                     000400 RLA    
+__SPCIMAGE_LOAD__         8780A1 RLA    __SPCIMAGE_RUN__          000200 RLA    
+__SPCIMAGE_SIZE__         001C1E REA    __ZEROPAGE_RUN__          000010 RLA    
+draw_bg                   858041 RLA    draw_player_sprite        84815C RLA    
+irq_handler               80801E RLA    load_bg_tiles             858000 RLA    
+load_player_tiles         848000 RLA    main                      818000 RLA    
+move_player               84803C RLA    music_inst_table          001B07 RLA    
+nmi_handler               808011 RLA    oam_used                  000011 RLZ    
+pently_patterns           001B5F RLA    pently_songs              001B8D RLA    
+player_dxlo               000015 RLZ    player_facing             000019 RLZ    
+player_frame_sub          000017 RLZ    player_xlo                000013 RLZ    
+player_yhi                000016 RLZ    ppu_clear_nt              838000 RLA    
+ppu_clear_oam             838036 RLA    ppu_copy                  838084 RLA    
+ppu_copy_oam              838079 RLA    ppu_pack_oamhi            83804E RLA    
+ppu_vsync                 83809E RLA    resetstub                 808009 RLA    
+spc_boot_apu              828062 RLA    spc_entry                 000300 RLA    
+wait_pad_allup            8480EE RLA    
+
+
+Exports list by value:
+----------------------
+__ZEROPAGE_RUN__          000010 RLA    oam_used                  000011 RLZ    
+player_xlo                000013 RLZ    player_dxlo               000015 RLZ    
+player_yhi                000016 RLZ    player_frame_sub          000017 RLZ    
+player_facing             000019 RLZ    OAM                       000200 RLA    
+__SPCIMAGE_RUN__          000200 RLA    spc_entry                 000300 RLA    
+OAMHI                     000400 RLA    music_inst_table          001B07 RLA    
+pently_patterns           001B5F RLA    pently_songs              001B8D RLA    
+__SPCIMAGE_SIZE__         001C1E REA    resetstub                 808009 RLA    
+nmi_handler               808011 RLA    irq_handler               80801E RLA    
+main                      818000 RLA    spc_boot_apu              828062 RLA    
+ppu_clear_nt              838000 RLA    ppu_clear_oam             838036 RLA    
+ppu_pack_oamhi            83804E RLA    ppu_copy_oam              838079 RLA    
+ppu_copy                  838084 RLA    ppu_vsync                 83809E RLA    
+load_player_tiles         848000 RLA    move_player               84803C RLA    
+wait_pad_allup            8480EE RLA    draw_player_sprite        84815C RLA    
+load_bg_tiles             858000 RLA    draw_bg                   858041 RLA    
+__SPCIMAGE_LOAD__         8780A1 RLA    
+
+
+Imports list:
+-------------
+OAM (main.o):
+    ppuclear.o                src/global.inc:8
+    player.o                  src/global.inc:8
+OAMHI (main.o):
+    ppuclear.o                src/global.inc:8
+    player.o                  src/global.inc:8
+__SPCIMAGE_LOAD__ ([linker generated]):
+    blarggapu.o               src/blarggapu.s:121
+__SPCIMAGE_RUN__ ([linker generated]):
+    blarggapu.o               src/blarggapu.s:121
+__SPCIMAGE_SIZE__ ([linker generated]):
+    blarggapu.o               src/blarggapu.s:121
+__ZEROPAGE_RUN__ ([linker generated]):
+    init.o                    src/init.s:3
+draw_bg (bg.o):
+    main.o                    src/global.inc:11
+draw_player_sprite (player.o):
+    main.o                    src/global.inc:14
+irq_handler (main.o):
+    snesheader.o              src/snesheader.s:9
+load_bg_tiles (bg.o):
+    main.o                    src/global.inc:11
+load_player_tiles (player.o):
+    main.o                    src/global.inc:14
+main (main.o):
+    init.o                    src/init.s:3
+move_player (player.o):
+    main.o                    src/global.inc:14
+music_inst_table (musicseq.o):
+    spcimage.o                src/pentlyseq.inc:128
+nmi_handler (main.o):
+    snesheader.o              src/snesheader.s:9
+oam_used (main.o):
+    player.o                  src/global.inc:3
+pently_patterns (musicseq.o):
+    spcimage.o                src/pentlyseq.inc:128
+pently_songs (musicseq.o):
+    spcimage.o                src/pentlyseq.inc:128
+player_dxlo (player.o):
+    main.o                    src/global.inc:15
+player_facing (player.o):
+    main.o                    src/global.inc:16
+player_frame_sub (player.o):
+    main.o                    src/global.inc:16
+player_xlo (player.o):
+    main.o                    src/global.inc:15
+player_yhi (player.o):
+    main.o                    src/global.inc:15
+ppu_clear_nt (ppuclear.o):
+    player.o                  src/global.inc:7
+    bg.o                      src/global.inc:7
+ppu_clear_oam (ppuclear.o):
+    main.o                    src/global.inc:6
+ppu_copy (ppuclear.o):
+    player.o                  src/global.inc:7
+    bg.o                      src/global.inc:7
+ppu_copy_oam (ppuclear.o):
+    main.o                    src/global.inc:6
+ppu_pack_oamhi (ppuclear.o):
+    main.o                    src/global.inc:6
+ppu_vsync (ppuclear.o):
+    main.o                    src/global.inc:7
+resetstub (init.o):
+    snesheader.o              src/snesheader.s:9
+spc_boot_apu (blarggapu.o):
+    main.o                    src/global.inc:19
+spc_entry (spcimage.o):
+    blarggapu.o               src/blarggapu.s:120
+wait_pad_allup (player.o):
+    main.o                    src/global.inc:14
+
